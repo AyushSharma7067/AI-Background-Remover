@@ -1,38 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
-        // Replace with your AdMob Ad Unit ID
-        const AD_UNIT_ID = 'ca-app-pub-4203324497373321/3099539736';
-        let adShown = false;
+        // Initialize AdMob ads
+        (adsbygoogle = window.adsbygoogle || []).push({
+            requestNonPersonalizedAds: 1,
+            params: {
+                userId: new URLSearchParams(window.location.search).get('user_id')
+            }
+        });
 
         function showAd() {
-            if (!adShown) {
-                // Initialize AdMob with Partner Bidding
-                (adsbygoogle = window.adsbygoogle || []).push({
-                    requestNonPersonalizedAds: 1,
-                    params: {
-                        userId: new URLSearchParams(window.location.search).get('user_id')
-                    }
-                });
-
-                // Load the ad
-                const ad = new google.ads.AdManagerAd({
-                    adUnitPath: AD_UNIT_ID,
-                    onAdClosed: () => {
-                        // Redirect to Telegram bot after ad closes
-                        window.location.href = "https://t.me/BgRemoverMagicbot";
-                    }
-                });
-                ad.load();
-                adShown = true;
-            }
+            // Load the ad
+            (adsbygoogle = window.adsbygoogle || []).push({});
         }
     </script>
 </head>
 <body onload="showAd()">
     <h2>Watch this ad to earn tokens:</h2>
-    <div id="ad-container"></div>
+    <!-- Ad container -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="pub-4203324497373321"
+         data-ad-slot="ca-app-pub-4203324497373321/3099539736"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
 </body>
 </html>
