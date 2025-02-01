@@ -191,10 +191,14 @@ def check_tokens(message):
 @bot.message_handler(func=lambda message: message.text == "🎁 Get Tokens")
 def get_tokens(message):
     user_id = message.from_user.id
-    ad_url = f"https://your-server.com/ad_page.html?user_id={user_id}"
-    
-    markup = types.InlineKeyboardMarkup()
-    markup.add(types.InlineKeyboardButton("📺 Watch Ad Now", url=ad_url))
+    ad_url = f"https://my-ad-page.onrender.com/ad_page.html?user_id={user_id}"
+    bot.send_message(
+        message.chat.id,
+        "Click below to watch an ad:",
+        reply_markup=types.InlineKeyboardMarkup().add(
+            types.InlineKeyboardButton("📺 Watch Ad", url=ad_url)
+        )
+    )
     
     bot.send_message(message.chat.id, """
 🎁 *Earn Tokens:*
