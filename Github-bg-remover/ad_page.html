@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        // Replace with your AdMob Ad Unit ID
+        const AD_UNIT_ID = 'ca-app-pub-4203324497373321/3099539736';
+        let adShown = false;
+
+        function showAd() {
+            if (!adShown) {
+                // Initialize AdMob with Partner Bidding
+                (adsbygoogle = window.adsbygoogle || []).push({
+                    requestNonPersonalizedAds: 1,
+                    params: {
+                        userId: new URLSearchParams(window.location.search).get('user_id')
+                    }
+                });
+
+                // Load the ad
+                const ad = new google.ads.AdManagerAd({
+                    adUnitPath: AD_UNIT_ID,
+                    onAdClosed: () => {
+                        // Redirect to Telegram bot after ad closes
+                        window.location.href = "https://t.me/BgRemoverMagicbot";
+                    }
+                });
+                ad.load();
+                adShown = true;
+            }
+        }
+    </script>
+</head>
+<body onload="showAd()">
+    <h2>Watch this ad to earn tokens:</h2>
+    <div id="ad-container"></div>
+</body>
+</html>
